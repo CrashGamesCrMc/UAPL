@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uapl", "uapl\uapl.csproj", "{A41E310C-3101-4CF3-BD8C-D0120FBD4DF1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{CAA31814-51DE-4712-95B1-867F3784F435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sys", "sys\sys.csproj", "{CADAFC2C-8C31-42D3-A58F-E4CFC02C832B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{A41E310C-3101-4CF3-BD8C-D0120FBD4DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41E310C-3101-4CF3-BD8C-D0120FBD4DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41E310C-3101-4CF3-BD8C-D0120FBD4DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CADAFC2C-8C31-42D3-A58F-E4CFC02C832B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CADAFC2C-8C31-42D3-A58F-E4CFC02C832B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CADAFC2C-8C31-42D3-A58F-E4CFC02C832B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CADAFC2C-8C31-42D3-A58F-E4CFC02C832B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CADAFC2C-8C31-42D3-A58F-E4CFC02C832B} = {CAA31814-51DE-4712-95B1-867F3784F435}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2378A9D5-8F8E-476F-9843-72431316B0E0}
