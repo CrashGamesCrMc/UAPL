@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace uapl
 {
     
-    public class Interpeter
+    public class Interpreter
     {
         public List<string> variable_names = new List<string>();
         public List<dynamic> variables = new List<dynamic>();
@@ -72,18 +72,18 @@ namespace uapl
             }
         }
 
-        public String RunStatement(String statement)
+        public String RunStatement(string statement)
         {
             String[] split = statement.Split(' ');
             if (split[0] == "run")
             {
-                if (split[1] == "import")
+                if (split[1] == "importn")
                 {
-                    Assembly dll = Assembly.LoadFile(split[2]);
+                    Assembly dll = Assembly.LoadFile(System.IO.Directory.GetCurrentDirectory()+@"\"+split[2]);
                     Type type = dll.GetType("Addon.Loader");
                     dynamic loader_instance = Activator.CreateInstance(type);
                     MethodInfo method = type.GetMethod("GetFunctions");
-                    string[] result = method.Invoke(loader_instance, new object[] { });
+                    string[][] result = method.Invoke(loader_instance, new object[] { });
 
                     Type function_type = dll.GetType("Addon.Functions");
                     dynamic function_instance = Activator.CreateInstance(function_type);
@@ -91,9 +91,9 @@ namespace uapl
                     int index = native_instances.Count;
                     native_instances.Add(function_instance);
 
-                    foreach (string function in result)
+                    foreach (string[] function in result)
                     {
-                        AddNativeFunction(function, function_type.GetMethod(function), index, false);
+                        AddNativeFunction(function[0], function_type.GetMethod(function[1]), index, false);
                     }
                 }
                 else
@@ -113,6 +113,22 @@ namespace uapl
                 }
             }
             return null;
+        }
+        
+        public void RunStatements(string[] statements)
+        {
+            foreach (string item in statements)
+            {
+                RunStatement(item);
+            }
+        }
+
+        public void InterpretConsole()
+        {
+            while (true)
+            {
+                Console.WriteLine(RunStatement(Console.ReadLine()));
+            }
         }
     }
 }

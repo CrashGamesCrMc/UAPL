@@ -8,7 +8,7 @@ namespace Addon
 {
     public class Loader
     {
-        public string[] GetFunctions() => new string[]{"test"};
+        public string[][] GetFunctions() => new string[][] { new string[] { "test", "test" }, new string[] { "subclass.test2", "subclass_test2"} };
     }
     public class Functions
     {
@@ -16,6 +16,10 @@ namespace Addon
         {
             Console.WriteLine("sys lib running test-function; called by line: \"" + cmd + "\"");
             return "success!";
+        }
+        public string subclass_test2(string cmd)
+        {
+            return cmd + "/lol";
         }
     }
 }
