@@ -12,9 +12,9 @@ namespace Addon
     }
     public class Functions
     {
-        public string getPlatform(string cmd)
+        public string getBase(string cmd, dynamic interpreter)
         {
-            
+            return "c#";
         }
     }
 }

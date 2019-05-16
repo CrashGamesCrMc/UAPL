@@ -12,14 +12,14 @@ namespace Addon
     }
     public class Functions
     {
-        public string and(string cmd)
+        public string and(string cmd, dynamic interpreter)
         {
             string[] split = cmd.Split(' ');
-            if (split[2] != "\"true\"" && split[3] != "\"true\"")
+            if (split[2] != "bool:true" && split[3] != "bool:true")
             {
-                return "\"true\"";
+                return "bool:true";
             }
-            return "\"false\"";
+            return "bool:false";
         }
     }
 }
