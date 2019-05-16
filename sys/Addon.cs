@@ -12,14 +12,9 @@ namespace Addon
     }
     public class Functions
     {
-        public string test(string cmd)
+        public string getPlatform(string cmd)
         {
-            Console.WriteLine("sys lib running test-function; called by line: \"" + cmd + "\"");
-            return "success!";
-        }
-        public string subclass_test2(string cmd)
-        {
-            return cmd + "/lol";
+            
         }
     }
 }
