@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\console\console.csproj">
+      <Project>{dc8b5101-eb4e-4bef-bb1f-1fae22684b81}</Project>
+      <Name>console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\core\core.csproj">
       <Project>{b311ad43-ea63-400c-9e4f-d58b8902b333}</Project>
       <Name>core</Name>

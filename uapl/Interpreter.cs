@@ -8,6 +8,8 @@ namespace uapl
 
     public class Interpreter
     {
+        public ConsoleColor stderr_color = ConsoleColor.DarkRed;
+
         public List<string> variable_names = new List<string>();
         public List<dynamic> variables = new List<dynamic>();
 
@@ -161,6 +163,11 @@ namespace uapl
                         {
                             return null;
                         }
+                        catch (NullReferenceException)
+                        {
+                            throw new NotImplementedException("The function \"" + split[1] + "\" is deklared in the extensions Addon.Loader.GetFunctions()" +
+                                " method, but is not implemented in Addon.Functions ");
+                        }
                     }
                     else
                     {
@@ -253,9 +260,10 @@ namespace uapl
                 }
                 catch (Exception e)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    ConsoleColor old = Console.ForegroundColor;
+                    Console.ForegroundColor = stderr_color;
                     Console.WriteLine(e);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = old;
                 }
             }
         }
