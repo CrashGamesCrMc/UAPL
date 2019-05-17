@@ -50,17 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\console\console.csproj">
-      <Project>{bd2fc23f-1710-42c3-aa53-cd425ace542e}</Project>
-      <Name>console</Name>
+    <ProjectReference Include="..\core\core.csproj">
+      <Project>{b311ad43-ea63-400c-9e4f-d58b8902b333}</Project>
+      <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\logic\logic.csproj">
-      <Project>{6a81b1f6-b59e-437f-8571-3ca6edcf61ae}</Project>
-      <Name>logic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\sys\sys.csproj">
-      <Project>{cadafc2c-8c31-42d3-a58f-e4cfc02c832b}</Project>
-      <Name>sys</Name>
+    <ProjectReference Include="..\help\help.csproj">
+      <Project>{726017f5-5cf8-4a57-90d9-617125860cc3}</Project>
+      <Name>help</Name>
     </ProjectReference>
     <ProjectReference Include="..\uapl\uapl.csproj">
       <Project>{a41e310c-3101-4cf3-bd8c-d0120fbd4df1}</Project>
