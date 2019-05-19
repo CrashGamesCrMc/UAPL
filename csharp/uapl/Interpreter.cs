@@ -36,7 +36,7 @@ namespace uapl
         public string PatchTogether(string[] array, int offset, int length)
         {
             string result = "";
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < length - 1; i++)
             {
                 result += array[i] + " ";
             }
