@@ -73,6 +73,24 @@ namespace uapl
                 }
             }
         }
+
+        public bool RemoveFunction(string name)
+        {
+            int index = function_names.IndexOf(name);
+            if (index == -1)
+            {
+                return false;
+            }
+            else
+            {
+                function_names.RemoveAt(index);
+                functions.RemoveAt(index);
+                function_types.RemoveAt(index);
+                native_instance_indexes.RemoveAt(index);
+                return true;
+            }
+        }
+
         public bool AddNativeFunction(string name, MethodInfo code, int native_instance_index, bool _override)
         {
             if (function_names.IndexOf(name) == -1)
@@ -114,6 +132,21 @@ namespace uapl
                 return true;
             }
             return false;
+        }
+
+        public bool RemoveVariable(string name)
+        {
+            int index = variable_names.IndexOf(name);
+            if (index == -1)
+            {
+                return false;
+            }
+            else
+            {
+                variable_names.RemoveAt(index);
+                variables.RemoveAt(index);
+                return true;
+            }
         }
         
         public dynamic ParseValue(string value)
@@ -211,20 +244,44 @@ namespace uapl
             {
                 Assembly dll = Assembly.LoadFile(System.IO.Directory.GetCurrentDirectory() + @"\" + split[1]);
                 Type type = dll.GetType("Addon.Loader");
-                dynamic loader_instance = Activator.CreateInstance(type);
-                MethodInfo method = type.GetMethod("GetFunctions");
-                string[][] result = method.Invoke(loader_instance, new object[] { });
-
-                Type function_type = dll.GetType("Addon.Functions");
-                dynamic function_instance = Activator.CreateInstance(function_type);
-
-                int index = native_instances.Count;
-                native_instances.Add(function_instance);
-
-                foreach (string[] function in result)
+                try
                 {
-                    AddNativeFunction(function[0], function_type.GetMethod(function[1]), index, false);
+                    dynamic loader_instance = Activator.CreateInstance(type);
+                    try
+                    {
+                        MethodInfo method = type.GetMethod("GetFunctions");
+                        string[][] result = method.Invoke(loader_instance, new object[] { });
+
+                        try
+                        {
+                            MethodInfo init_function = type.GetMethod("Init");
+                            init_function.Invoke(loader_instance, new object[] { this });
+                        }
+                        catch (NullReferenceException)
+                        {
+                        }
+
+                        Type function_type = dll.GetType("Addon.Functions");
+                        dynamic function_instance = Activator.CreateInstance(function_type);
+
+                        int index = native_instances.Count;
+                        native_instances.Add(function_instance);
+
+                        foreach (string[] function in result)
+                        {
+                            AddNativeFunction(function[0], function_type.GetMethod(function[1]), index, false);
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
+                        throw new Exceptions.ExtensionExceptions.ExtensionException("method Addon.Loader.GetFunctions() with return type string[][] missing! Is the DLL really an extension?");
+                    }
                 }
+                catch (ArgumentNullException)
+                {
+                    throw new Exceptions.ExtensionExceptions.ExtensionException("class Addon.Loader does not exist! Is the DLL really an extension?");
+                }
+                
             }
             else
             {

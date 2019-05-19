@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E4657A0-7737-4360-85FC-311049FE407A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>uapl_runnable</RootNamespace>
-    <AssemblyName>uapl_runnable</AssemblyName>
+    <ProjectGuid>{A7E5D5E8-6DF4-4FA8-BE57-0B8CDAFDCDF0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cleaner</RootNamespace>
+    <AssemblyName>cleaner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,37 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Loader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\cleaner\cleaner.csproj">
-      <Project>{a7e5d5e8-6df4-4fa8-be57-0b8cdafdcdf0}</Project>
-      <Name>cleaner</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\console\console.csproj">
-      <Project>{dc8b5101-eb4e-4bef-bb1f-1fae22684b81}</Project>
-      <Name>console</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\core\core.csproj">
-      <Project>{b311ad43-ea63-400c-9e4f-d58b8902b333}</Project>
-      <Name>core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\help\help.csproj">
-      <Project>{726017f5-5cf8-4a57-90d9-617125860cc3}</Project>
-      <Name>help</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\time\time.csproj">
-      <Project>{1551edd5-f4de-47ee-9652-38e8752bff6c}</Project>
-      <Name>time</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\uapl\uapl.csproj">
-      <Project>{a41e310c-3101-4cf3-bd8c-d0120fbd4df1}</Project>
-      <Name>uapl</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

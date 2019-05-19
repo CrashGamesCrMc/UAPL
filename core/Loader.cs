@@ -6,7 +6,8 @@ namespace Addon
     {
         public string[][] GetFunctions() => new string[][] { new string[] { "==", "equals" }, new string[] { "and", "and" }, new string[] { "set", "set" },new string[] { "del", "del"},
             new string[]{ "+=", "add"}, new string[]{ "+", "addn" }, new string[]{ "-=", "substract" }, new string[]{ "-", "substractn" },
-            new string[]{ "*=", "multiply" }, new string[]{"*","multiplyn" }, new string[]{ "/=","divide" }, new string[]{ "/", "dividen" } };
+            new string[]{ "*=", "multiply" }, new string[]{"*","multiplyn" }, new string[]{ "/=","divide" }, new string[]{ "/", "dividen" },
+            new string[]{ "variable.count", "variable_count" }, new string[]{ "function.count", "function_count" } };
     }
     public class Functions
     {
@@ -28,6 +29,16 @@ namespace Addon
         public void del(string cmd, string[] split, dynamic interpreter)
         {
             interpreter.variables.Remove(split[2]);
+        }
+        
+        public int variable_count(string cmd, string[] split, dynamic interpreter)
+        {
+            return interpreter.variables.Count;
+        }
+        
+        public int function_count(string cmd, string[] split, dynamic interpreter)
+        {
+            return interpreter.functions.Count;
         }
 
         public void add(string cmd, string[] split, dynamic interpreter)

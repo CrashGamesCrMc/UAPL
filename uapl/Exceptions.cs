@@ -44,5 +44,14 @@ namespace uapl
                 }
             }
         }
+        public class ExtensionExceptions
+        {
+            public class ExtensionException : Exception
+            {
+                public ExtensionException(string message) : base(message)
+                {
+                }
+            }
+        }
     }
 }
